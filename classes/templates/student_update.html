@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
+​
 {% block title %}Create{% endblock title %}
-
+​
 {% block content %}
     
 <br>
 <div class="card">
-  <h5 class="card-header">Create Classroom</h5>
+  <h5 class="card-header">Student</h5>
   <div class="card-body">
     <p class="card-text">
-        <form action="{% url 'classroom-create' %}" method="POST" enctype="multipart/form-data">
+        <form action="{% url 'student-update' student.id %}" method="POST">
             {% csrf_token %}
             {{form|crispy}}
             <input type="submit" value="Create" class="btn btn-outline-success">
@@ -19,3 +19,7 @@
   </div>
 </div>
 {% endblock content %}
+
+
+
+
