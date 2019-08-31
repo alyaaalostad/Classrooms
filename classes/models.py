@@ -15,9 +15,10 @@ class Students(models.Model):
 	name= models.CharField(max_length=50)
 	exam_grade= models.FloatField()
 	GENDERS = (
-	('male', 'Male')
-		('female', 'Female'))
-	gender = models.CharField(choices= GENDERS, max_length= 50, default='female')
+	('male', 'Male'),
+	('female', 'Female')
+		)
+	gender = models.CharField(choices= GENDERS, max_length= 105, default='female')
 	date_of_birth = models.DateField()
 	classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
 

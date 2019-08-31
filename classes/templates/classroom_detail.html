@@ -5,38 +5,45 @@
 	<div class="card-header" style="background-color: #008080; color: 000034;">
 		Classroom Details
 	</div>
-	<div class="card-body">
-		<h5 class="card-title" style="color: #000034;">classroom name: {{classroom.name}} <br>
-		classroom subject: {{classroom.subject}}</h5>
-		<p class="card-text" style="color: 000034;">classroom year: {{classroom.year}}</p>
+	<div class="card-bod" >
+		<h5 class="card-title" style="color: #000034;">{{classroom.name}}  {{classroom.subject}}</h5>
+		<p class="card-text" style="color: 000034;">{{classroom.year}}</p>
 
 		{% if request.user == classroom.teacher%}
+		<a href="{% url 'students-create' classroom.id  %}" class="btn" style="background-color: #008080; color: #FFFAFA;">Add Student</a>
 		<a href="{% url 'classroom-update' classroom.id %}" class="btn" style="background-color: #008080; color: #FFFAFA;">Update</a>
 		<a href="{% url 'classroom-delete' classroom.id %}" class="btn" style="background-color: #008080; color: #FFFAFA;">Delete</a>
-			<a href="{% url 'students-create' classroom.id  %}" class="btn" style="background-color: #008080; color: #FFFAFA;">Add Student</a>
 		{%endif%}
-<table>
-	<tr>
-		<th scope='col'>Name</th>
-		<th scope='col'>Grade</th>
-	</tr>
-	<thead>
-		<tbody>
-		{% if request.user == classroom.teacher%}
-							 {%for student in students %}
-					 <tr>
-									<td> {{student.name}} </td>
-									<td>{{student.exam_grade}} </td>
-						</tr>
-</table>
-</tbody>
-</thead>	
-				<td href="{% url 'student-update' classroom.id %}" class="btn" style="background-color: #008080; color: #FFFAFA;">Update</td>
-				<td href="{% url 'student-delete' classroom.id %}" class="btn" style="background-color: #008080; color: #FFFAFA;">Delete</td>
-		{%endif%}
-		{%endfor%}
+<div class="my-5">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Actions</th>
 
-	</div>
+    </tr>
+  </thead>
+  <tbody>
+  	{%for student in students%}
+    <tr>
+    	
+    		<td>{{student.name}}</td>
+      		<td>{{student.exam_grade}}</td>
+      		<td>
+			<a href="{% url 'student-update' classroom.id student.id %}" class="btn" style="background-color: #008080; color: #FFFAFA;">Update</a>
+			<a href="{% url 'student-delete' classroom.id  student.id %}" class="btn" style="background-color: #008080; color: #FFFAFA;">Delete</a>
+
+      		</td>
+    	
+
+    </tr>
+    {%endfor%}
+   
+  </tbody>
+</table>
+
 </div>
+
 
 {% endblock content %}

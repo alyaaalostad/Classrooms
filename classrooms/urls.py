@@ -14,8 +14,8 @@ urlpatterns = [
 	path('classrooms/<int:classroom_id>/update/', views.classroom_update, name='classroom-update'),
 	path('classrooms/<int:classroom_id>/delete/', views.classroom_delete, name='classroom-delete'),
 
-	path('classrooms-update/<int:student_id>/', views.student_update, name='student-update'),
-	path('classrooms-delete/<int:student_id>/', views.student_delete, name='student-delete'),
+	path('classroom/<int:classroom_id>/update/<int:student_id>/', views.student_update, name='student-update'),
+	path('classrooms/<int:classroom_id>/delete/<int:student_id>/', views.student_delete, name='student-delete'),
 	path('signup/',views.signup ,name='signup'),
 	path('signin/',views.signin ,name='signin'),
 	path('signout/',views.signout ,name='signout'),

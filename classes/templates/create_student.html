@@ -13,12 +13,6 @@
         <form action="{% url 'students-create' classroom.id %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{form|crispy}}
-                {%for student in students %}
-                    {{students.name}}
-                    {{students.exam_grade}}
-                    {{students.gender}}
-                    {{students.date_of_birth}}
-                {%endfor%}
 
             <input type="submit" value="Create" class="btn btn-outline-success">
         
